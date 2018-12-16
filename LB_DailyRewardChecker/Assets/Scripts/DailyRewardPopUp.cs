@@ -63,6 +63,7 @@ public class DailyRewardPopUp : MonoBehaviour {
     {
         //earn reward
         Deactivate();
+        EventManager_OnDailyRewardRemainingTimeSetted(0);
     }
 
     private void WatchAndEarnBonus()
@@ -70,9 +71,9 @@ public class DailyRewardPopUp : MonoBehaviour {
         //show ad 
     }
 
-
     void EventManager_OnDailyRewardRemainingTimeSetted(double val)
     {
+        StopCoroutine("RewardTimer");
         StartCoroutine("RewardTimer", val);
     }
 
@@ -80,7 +81,7 @@ public class DailyRewardPopUp : MonoBehaviour {
     {
         var wait = new WaitForSeconds(1f);
 
-        var oneDayTotalSeconds = 1440;
+        var oneDayTotalSeconds = 86400;
         var remainingTime = oneDayTotalSeconds - seconds;
 
         while (remainingTime > 0)
