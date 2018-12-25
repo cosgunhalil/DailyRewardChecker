@@ -25,19 +25,8 @@ public class EventManager {
         }
     }
 
-    public delegate void MessageDelegate();
-    public static event MessageDelegate OnDailyRewardEarn;
-
-    public delegate void DoubleSettedDelegate(double val);
-    public static event DoubleSettedDelegate OnDailyRewardRemainingTimeSetted;
-
-    public void SetDailyRewardCanBeEarned()
-    {
-        if (OnDailyRewardEarn != null)
-        {
-            OnDailyRewardEarn();
-        }
-    }
+    public delegate void SecondsSettedDelegate(double val);
+    public static event SecondsSettedDelegate OnDailyRewardRemainingTimeSetted;
 
     public void SetTimeToEarnDailyReward(double totalSeconds)
     {

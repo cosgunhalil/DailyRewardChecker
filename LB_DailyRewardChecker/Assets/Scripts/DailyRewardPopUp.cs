@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,7 +14,6 @@ public class DailyRewardPopUp : MonoBehaviour {
     private void Awake()
     {
         canvas = GetComponent<Canvas>();
-        EventManager.OnDailyRewardEarn += EventManager_OnDailyRewardEarn;
         EventManager.OnDailyRewardRemainingTimeSetted += EventManager_OnDailyRewardRemainingTimeSetted;
     }
 
@@ -31,7 +28,6 @@ public class DailyRewardPopUp : MonoBehaviour {
 
     private void OnDestroy()
     {
-        EventManager.OnDailyRewardEarn -= EventManager_OnDailyRewardEarn;
         EventManager.OnDailyRewardRemainingTimeSetted -= EventManager_OnDailyRewardRemainingTimeSetted;
     }
 
@@ -39,11 +35,11 @@ public class DailyRewardPopUp : MonoBehaviour {
     {
         if (dailyRewardChecker.GetDailyRewardCanBeEarned())
         {
-            EventManager.Instance.SetDailyRewardCanBeEarned();
+            OnDailyRewardEarn();
         }
     }
 
-    private void EventManager_OnDailyRewardEarn()
+    private void OnDailyRewardEarn()
     {
         Activate();
     }
